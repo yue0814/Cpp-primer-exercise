@@ -4,17 +4,19 @@ using namespace std;
 
 class Person
 {
+friend istream &read(istream&, Person&);
+friend ostream &print(ostream&, const Person&);
 public:
-    // Person(const string &n, const string &a): personName(n), personAddress(a) {}
     Person() = default;
+    Person(const string &n, const string &a): personName(n), personAddress(a) {}
     Person(istream &is);
     string address() const {return personAddress;}
     string name() const {return personName;}
+private:
     string personName;
     string personAddress;
 };
-istream &read(istream&, Person&);
-ostream &print(ostream&, const Person&);
+
 
 Person::Person(istream &is)
 {
